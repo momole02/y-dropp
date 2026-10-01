@@ -1,0 +1,49 @@
+{
+  "name": "ydropp",
+  "version": "1.0.0",
+  "description": "Transfert de fichiers du téléphone vers l'ordinateur via le réseau local",
+  "license": "MIT",
+  "private": true,
+  "bin": {
+    "ydropp": "build/ydropp.js"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.web.json",
+    "build:web": "ts-node scripts/build-web.ts",
+    "build": "npm run build:web && webpack --mode production",
+    "start": "npm run build:web && ts-node src/cli.ts",
+    "dist:linux": "ts-node scripts/dist.ts linux",
+    "dist:win": "ts-node scripts/dist.ts windows",
+    "dist:mac": "ts-node scripts/dist.ts mac",
+    "dist": "npm run build && ts-node scripts/dist.ts"
+  },
+  "engines": {
+    "node": ">=14.15"
+  },
+  "dependencies": {
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "cli-progress": "^3.12.0",
+    "commander": "^9.5.0",
+    "express": "^4.22.3",
+    "gradient-string": "^2.0.2",
+    "ora": "^5.4.1",
+    "qrcode-terminal": "^0.12.0",
+    "winston": "^3.19.0",
+    "winston-daily-rotate-file": "^4.7.1"
+  },
+  "devDependencies": {
+    "@types/cli-progress": "^3.11.6",
+    "@types/express": "^4.17.25",
+    "@types/gradient-string": "^1.1.6",
+    "@types/node": "^14.18.63",
+    "@types/qrcode-terminal": "^0.12.2",
+    "nexe": "^5.0.0-beta.4",
+    "tailwindcss": "^3.4.19",
+    "ts-loader": "^9.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "webpack": "^5.111.1",
+    "webpack-cli": "^5.1.4"
+  }
+}

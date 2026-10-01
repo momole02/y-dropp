@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 98%;
+    --foreground: 240 10% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+    --muted: 240 5% 94%;
+    --muted-foreground: 240 4% 46%;
+    --border: 240 6% 88%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --success: 142 71% 40%;
+    --ring: 262 83% 58%;
+    --radius: 0.85rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: 240 10% 4%;
+      --foreground: 0 0% 98%;
+      --card: 240 8% 8%;
+      --card-foreground: 0 0% 98%;
+      --muted: 240 5% 15%;
+      --muted-foreground: 240 5% 65%;
+      --border: 240 5% 18%;
+      --primary: 263 90% 68%;
+      --primary-foreground: 240 10% 4%;
+      --destructive: 0 75% 60%;
+      --success: 142 65% 50%;
+      --ring: 263 90% 68%;
+    }
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium
+      transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
+      disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-primary-foreground hover:opacity-90;
+  }
+
+  .btn-ghost {
+    @apply btn text-muted-foreground hover:bg-muted hover:text-foreground;
+  }
+
+  .btn-icon {
+    @apply inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground;
+  }
+
+  .progress {
+    @apply relative h-2 w-full overflow-hidden rounded-full bg-muted;
+  }
+
+  .progress-bar {
+    @apply h-full rounded-full bg-primary transition-[width] duration-200 ease-out;
+  }
+
+  .input {
+    @apply flex h-11 w-full rounded-md border bg-background px-3 text-center font-mono text-lg tracking-[0.4em]
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+  }
+
+  .dropzone-active {
+    @apply border-primary bg-primary/5;
+  }
+
+  .shimmer {
+    background-image: linear-gradient(90deg, transparent 0%, rgb(255 255 255 / 0.35) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
+  }
+
+  @keyframes shimmer {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+  }
+}
